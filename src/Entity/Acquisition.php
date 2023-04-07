@@ -53,12 +53,12 @@ class Acquisition
         return $this;
     }
 
-    public function getAnnonce(): ?Annonce
+    public function getAnnonce(): ?Announcement
     {
         return $this->annonce;
     }
 
-    public function setAnnonce(?Annonce $annonce): self
+    public function setAnnonce(?Announcement $annonce): self
     {
         $this->annonce = $annonce;
 

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class Annonce
+class Announcement
 {
     /**
      * @ORM\Id

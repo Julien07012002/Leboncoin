@@ -19,3 +19,6 @@ app_address_delete:
     path: '/address/delete/{id}'
     controller: App\Controller\AddressController::delete
     methods: ['POST']
+add_announcement:
+    path: /annonce/ajouter
+    controller: App\Controller\AnnouncementController::addAnnouncement
