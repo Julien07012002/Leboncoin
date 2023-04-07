@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Ajouter une adresse</h1>
+
+  {% if errors is not empty %}
+    <div class="alert alert-danger">
+      {% for error in errors %}
+        <p>{{ error.message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(form) }}
+  </form>
+{% endblock %}

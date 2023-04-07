@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Edit Address</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.street) }}
+    {{ form_row(form.city) }}
+    {{ form_row(form.zip) }}
+
+    <button type="submit" class="btn btn-primary">Save changes</button>
+
+    {{ form_end(form) }}
+
+    <hr>
+
+    <h2>Delete address</h2>
+
+    <form action="{{ path('admin_address_delete', {'id': address.id}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this address?');">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ address.id) }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+{% endblock %}

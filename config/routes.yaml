@@ -3,3 +3,19 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+user_profile:
+  path: /backoffice/user/profile
+  controller: App\Controller\Backoffice\UserController::profile
+  methods: ['GET']
+  requirements:
+    _role: ROLE_USER
+admin_address_edit:
+  path: /admin/address/{id}/edit
+  controller: App\Controller\Admin\AddressController::edit
+  methods: [GET, POST]
+  requirements:
+    id: '\d+'
+app_address_delete:
+    path: '/address/delete/{id}'
+    controller: App\Controller\AddressController::delete
+    methods: ['POST']
