@@ -17,7 +17,7 @@ class Commentary
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="commentaries")
+     * @ORM\ManyToOne(targetEntity="Announcement", inversedBy="commentaries")
      * @ORM\JoinColumn(name="annonce_id", referencedColumnName="id")
      */
     private $annonce;
@@ -40,12 +40,12 @@ class Commentary
         return $this->id;
     }
 
-    public function getAnnonce(): ?Annonce
+    public function getAnnonce(): ?Announcement
     {
         return $this->annonce;
     }
 
-    public function setAnnonce(?Annonce $annonce): self
+    public function setAnnonce(?Announcement $annonce): self
     {
         $this->annonce = $annonce;
 

@@ -1,0 +1,10 @@
+{# templates/announcement/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ announcement.title }}</h1>
+    <p>{{ announcement.description }}</p>
+    <p>Prix : {{ announcement.price }} €</p>
+    <p>Vendeur : {{ announcement.user.username }}</p>
+{% endblock %}

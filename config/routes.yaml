@@ -22,3 +22,12 @@ app_address_delete:
 add_announcement:
     path: /annonce/ajouter
     controller: App\Controller\AnnouncementController::addAnnouncement
+announcement_toggle_visibility:
+  path: '/announcement/toggle-visibility/{id}'
+  controller: App\Controller\AnnouncementController::toggleVisibility
+  methods: POST
+  requirements:
+    id: '\d+'
+app_announcement_detail:
+    path: /announcement/{id}
+    controller: App\Controller\AnnouncementController::detail

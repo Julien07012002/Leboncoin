@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 use App\Entity\Address;
 use App\Form\AddressType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

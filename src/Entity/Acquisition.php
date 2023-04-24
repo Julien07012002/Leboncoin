@@ -23,7 +23,7 @@ class Acquisition
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="acquisitions")
+     * @ORM\ManyToOne(targetEntity="Announcement", inversedBy="acquisitions")
      * @ORM\JoinColumn(name="annonce_id", referencedColumnName="id")
      */
     private $annonce;

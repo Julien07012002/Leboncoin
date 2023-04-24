@@ -1,0 +1,61 @@
+{# templates/announcement/detail.html.twig #}
+
+{# ... #}
+
+{% if is_granted('ROLE_ADMIN') %}
+    <form action="{{ path('announcement_toggle_visibility', { 'id': announcement.id }) }}" method="post">
+        {% if announcement.isVisible %}
+            <button type="submit" class="btn btn-sm btn-danger">Cacher</button>
+        {% else %}
+            <button type="submit" class="btn btn-sm btn-success">Afficher</button>
+        {% endif %}
+        {{ csrf_token('toggle_visibility') }}
+    </form>
+{% endif %}
+
+{% block body %}
+  <h1>Détails annonce</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <h2>{{ announcement.title }}</h2>
+      <p>{{ announcement.description }}</p>
+      <p>{{ announcement.price }} €</p>
+    </div>
+  </div>
+
+  <hr>
+
+<h2>Commentaires</h2>
+
+  {% if comments is not empty %}
+    {% for comment in comments %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <p>{{ comment.content }}</p>
+          <small>Par {{ comment.user.username }} le {{ comment.createdAt|date('d/m/Y H:i:s') }}</small>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Pas encore de commentaires pour cette annonce.</p>
+  {% endif %}
+
+  <hr>
+
+  {% if app.user %}
+    <h2>Ajouter un commentaire</h2>
+
+    {{ form_start(commentForm) }}
+      {{ form_widget(commentForm.content, {'attr': {'class': 'form-control'}}) }}
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(commentForm) }}
+  {% else %}
+    <p>Vous devez être connecté pour ajouter un commentaire.</p>
+  {% endif %}
+  {% if app.user %}
+    <a href="{{ path('achat_announcement', { 'id': announcement.id }) }}" class="btn btn-primary">Acheter</a>
+{% else %}
+    <a href="{{ path('app_login') }}" class="btn btn-primary">Se connecter pour acheter</a>
+{% endif %}
+{% endblock %}

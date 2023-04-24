@@ -1,20 +1,20 @@
+<!-- templates/announcement/index.html.twig -->
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnnouncementController!{% endblock %}
+{% block content %}
+    <h1>Annonces</h1>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% for announcement in announcements %}
+        <div class="card">
+            <img src="{{ asset(announcement.imageFilename) }}" alt="{{ announcement.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ announcement.title }}</h5>
+                <p class="card-text">{{ announcement.description }}</p>
+                <p class="card-text">{{ announcement.price }} €</p>
+                <a href="{{ path('announcement_show', {'id': announcement.id}) }}" class="btn btn-primary">Voir l'annonce</a>
+            </div>
+        </div>
+    {% endfor %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Symfony/Leboncoin/Leboncoin_THEOBALD/src/Controller/AnnouncementController.php'|file_link(0) }}">src/Controller/AnnouncementController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Symfony/Leboncoin/Leboncoin_THEOBALD/templates/announcement/index.html.twig'|file_link(0) }}">templates/announcement/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
